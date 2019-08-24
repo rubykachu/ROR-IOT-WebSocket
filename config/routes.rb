@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :users
   resources :areas
   resources :devices
+  resources :groups
 end
