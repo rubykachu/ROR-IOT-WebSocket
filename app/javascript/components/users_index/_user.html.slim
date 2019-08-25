@@ -7,4 +7,4 @@ tr
     = check_box_tag :admin, nil, user.admin?, disabled: true
   td
     = link_to 'Edit', edit_user_path(user), class: 'text-warning pr-3'
-    = link_to 'Destroy', nil, class: 'text-danger'
+    = link_to 'Destroy', user_path(user), class: 'text-danger', method: :delete, data: { confirm: t('confirm') }

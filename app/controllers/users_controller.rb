@@ -27,6 +27,11 @@ class UsersController < ApplicationController
     redirect_to edit_user_path(user.id), alert: I18n.t('user.create.fail')
   end
 
+  def destroy
+    return redirect_to users_path, notice: I18n.t('user.destroy.success') if user.destroy
+    redirect_to users_path, alert: I18n.t('user.destroy.fail')
+  end
+
   private
 
   def permit_params
