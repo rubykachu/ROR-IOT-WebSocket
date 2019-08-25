@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = UserContracts::Create.new(permit_params)
     return render :new if @user.invalid?
-    return redirect_to users_path, notice: I18n.t('user.create.success') if @user.record.save
+    return redirect_to save_another_path(users_path, new_user_path), notice: I18n.t('user.create.success') if @user.record.save
     redirect_to new_user_path, alert: I18n.t('user.create.fail')
   end
 

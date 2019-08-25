@@ -32,6 +32,6 @@
         option selected="selected"  Choose...
         option ...
   .col-sm-10.offset-sm-2.pl-0
-    = f.submit 'Save', class: 'btn btn-primary mr-2'
-    button.btn.btn-info.mr-2 type="button"  Save and add another
+    = f.submit t('save'), class: 'btn btn-primary mr-2'
+    = yield :save_another
     = link_to 'Cancel', users_path, class: 'btn btn-secondary'
