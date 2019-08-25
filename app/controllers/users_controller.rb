@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate
 
   def index
+    @users = User.all
   end
 
   def new
