@@ -23,7 +23,7 @@
       .custom-control.custom-checkbox
         = f.check_box :admin, class: 'custom-control-input'
         label.custom-control-label for="user_admin"  Admin
-        = error_message_inline @user, :admin
+      = error_message_inline @user, :admin
 
   .form-group.row
     label.col-sm-2.col-form-label for="inputPassword"  Group

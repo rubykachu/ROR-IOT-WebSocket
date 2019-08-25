@@ -6,5 +6,5 @@ tr
   td
     = check_box_tag :admin, nil, user.admin?, disabled: true
   td
-    = link_to 'Edit', nil, class: 'text-warning pr-3'
+    = link_to 'Edit', edit_user_path(user), class: 'text-warning pr-3'
     = link_to 'Destroy', nil, class: 'text-danger'
