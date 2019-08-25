@@ -4,8 +4,6 @@ nav.navbar.navbar-dark.sticky-top.bg-dark.flex-md-nowrap.p-0
   .col-sm-3.col-md-2.ml-0
     ul.navbar-nav.flex-row
       li.nav-item.text-nowrap.px-2
-        a.nav-link href="#"
-          | Hello, Minh
+        = hello_user
       li.nav-item.text-nowrap.px-2
-        a.nav-link href="#"
-          | Sign out
+        = link_to 'Sign out', sign_out_path, method: :delete, class: 'nav-link'
