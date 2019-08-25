@@ -1,6 +1,8 @@
 en:
   save: Save
   save_another: Save and add another
+  session:
+    fail: Login failed
   user:
     create:
       success: Create user successfully
