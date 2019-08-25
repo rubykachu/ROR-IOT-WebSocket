@@ -1,27 +1,9 @@
+= print_flash_message
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
   h1.h2 Users
   .btn-toolbar.mb-2.mb-md-0
     .btn-group.mr-2
       = link_to 'Create user', new_user_path, class: 'btn btn-sm btn-outline-secondary'
 
-.table-responsive.my-table
-  table.table.table-striped.table-sm
-    thead
-      tr
-        th.border-top-0 SYSID
-        th.border-top-0 Username
-        th.border-top-0 Fullname
-        th.border-top-0 Groups
-        th.border-top-0 Admin
-        th.border-top-0 Action
-    tbody
-      tr
-        td 1,001
-        td moderator
-        td Minh Tang Q.
-        td Light, Air condition
-        td
-          input type="checkbox"
-        td
-          = link_to 'Edit', nil, class: 'text-warning pr-3'
-          = link_to 'Destroy', nil, class: 'text-danger'
+= c 'users_index'
+

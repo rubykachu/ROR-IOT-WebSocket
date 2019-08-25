@@ -1,13 +1,13 @@
 module ComponentHelper
-  def component(component_name, locals = {}, &block)
-    if locals.key?(:collection)
+  def component(component_name, attrs = {}, &block)
+    if attrs.key?(:collection)
       partial = component_name.split('/').last.singularize
-      partial = locals[:partial] if locals[:partial].present?
+      partial = attrs[:partial] if attrs[:partial].present?
       path = "components/#{component_name}/#{partial}"
-      render partial: path, collection: locals[:collection], as: locals[:as], locals: locals[:locals]
+      render partial: path, collection: attrs[:collection], as: attrs[:as], locals: attrs[:locals]
     else
       partial = component_name.split('/').last
-      render("components/#{component_name}/#{partial}", locals, &block)
+      render("components/#{component_name}/#{partial}", attrs, &block)
     end
   end
 

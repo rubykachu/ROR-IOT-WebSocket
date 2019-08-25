@@ -9,7 +9,7 @@ class SessionContracts::Create < ApplicationContract
 
   def authenticate
     user = User.find_by(username: username)
-    return if user&.authenticate(password)
-    errors.add(:invalid_authenticate, "Login failed")
+    return if user&.authenticate(password) && user&.admin?
+    errors.add(:invalid_authenticate, I18n.t('session.fail'))
   end
 end

@@ -1,0 +1,12 @@
+.table-responsive.my-table
+  table.table.table-striped.table-sm
+    thead
+      tr
+        th.border-top-0 #
+        th.border-top-0 Username
+        th.border-top-0 Fullname
+        th.border-top-0 Groups
+        th.border-top-0 Admin
+        th.border-top-0 Action
+    tbody
+      = render partial: 'components/users_index/user', collection: @users
