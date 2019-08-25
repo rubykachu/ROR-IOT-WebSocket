@@ -1,13 +1,7 @@
 doctype html
 html
   head
-    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
-    title ManagementIotApp
-    = csrf_meta_tags
-    = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all'
-    = stylesheet_pack_tag 'application', media: 'all'
-    = javascript_pack_tag 'application'
+    = render 'layouts/head'
   body
     = c 'layouts/navigation'
     .container-fluid
@@ -15,3 +9,5 @@ html
         = c 'layouts/sidebar'
         main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 role="main"
           = yield
+    = javascript_pack_tag 'application'
+
