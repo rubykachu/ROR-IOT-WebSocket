@@ -1,0 +1,21 @@
+.table-responsive.my-table
+  table.table.table-striped.table-sm
+    thead
+      tr
+        th.border-top-0 SYSID
+        th.border-top-0 Username
+        th.border-top-0 Fullname
+        th.border-top-0 Groups
+        th.border-top-0 Admin
+        th.border-top-0 Action
+    tbody
+      tr
+        td 1,001
+        td moderator
+        td Minh Tang Q.
+        td Light, Air condition
+        td
+          input type="checkbox"
+        td
+          = link_to 'Edit', nil, class: 'text-warning pr-3'
+          = link_to 'Destroy', nil, class: 'text-danger'

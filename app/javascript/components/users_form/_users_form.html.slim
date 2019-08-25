@@ -1,0 +1,37 @@
+= form_with model: @user.record, local: true do |f|
+  .form-group.row
+    label.col-sm-2.col-form-label for="user_fullname"  Fullname
+    .col-sm-10
+      = f.text_field :fullname, class: 'form-control', placeholder: 'Fullname'
+      = error_message_inline @user, :fullname
+
+  .form-group.row
+    label.col-sm-2.col-form-label.form-required for="user_username"  Username
+    .col-sm-10
+      = f.text_field :username, class: 'form-control', placeholder: 'Username'
+      = error_message_inline @user, :username
+
+  .form-group.row
+    label.col-sm-2.col-form-label.form-required for="inputPassword"  Password
+    .col-sm-10
+      = f.text_field :password, class: 'form-control', placeholder: 'Password'
+      = error_message_inline @user, :password
+
+  .form-group.row
+    label.col-sm-2.col-form-label
+    .col-sm-10
+      .custom-control.custom-checkbox
+        = f.check_box :admin, class: 'custom-control-input'
+        label.custom-control-label for="user_admin"  Admin
+        = error_message_inline @user, :admin
+
+  .form-group.row
+    label.col-sm-2.col-form-label for="inputPassword"  Group
+    .col-sm-10
+      select#inputState.form-control
+        option selected="selected"  Choose...
+        option ...
+  .col-sm-10.offset-sm-2.pl-0
+    = f.submit 'Save', class: 'btn btn-primary mr-2'
+    button.btn.btn-info.mr-2 type="button"  Save and add another
+    = link_to 'Cancel', users_path, class: 'btn btn-secondary'
