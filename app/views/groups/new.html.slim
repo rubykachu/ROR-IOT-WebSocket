@@ -24,25 +24,25 @@ form
         b> +
         | Add new area
 
+  .form-group.row
+    label.col-sm-2.col-form-label Assign device
+    .col-sm-10
+      .js-dropdown.dropdown.my-dropdown
+        .form-control-plaintext.border.rounded.px-2.dropdown-toggle.my-tag
+          / span.badge.badge-info Hello
+        ul.dropdown-menu.w-100
+          li.dropdown-item
+            .custom-control.custom-checkbox
+              input#customCheck1.custom-control-input value="hello" type="checkbox" /
+              label.custom-control-label  Is admin
+          li.dropdown-item
+            .custom-control.custom-checkbox
+              input#customCheck2.custom-control-input value="goodbye" type="checkbox" /
+              label.custom-control-label  Is admin
+          li.dropdown-item.text-right.text-muted.note-outside
+            i click outside to close select box
 
   .col-sm-10.offset-sm-2.pl-0
     button.btn.btn-primary.mr-2 type="button"  Save
     button.btn.btn-info.mr-2 type="button"  Save and add another
     = link_to 'Cancel', areas_path, class: 'btn btn-secondary'
-
-/! Button trigger modal
-button.btn.btn-primary data-target="#exampleModal" data-toggle="modal" type="button"
-  | Launch demo modal
-/! Modal
-#exampleModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" role="dialog" tabindex="-1"
-  .modal-dialog role="document"
-    .modal-content
-      .modal-header
-        h5#exampleModalLabel.modal-title Modal title
-        button.close aria-label="Close" data-dismiss="modal" type="button"
-          span aria-hidden="true"  ×
-      .modal-body
-        | \...
-      .modal-footer
-        button.btn.btn-secondary data-dismiss="modal" type="button"  Close
-        button.btn.btn-primary type="button"  Save changes

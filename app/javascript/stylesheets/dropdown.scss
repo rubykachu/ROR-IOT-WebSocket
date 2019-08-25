@@ -1,0 +1,25 @@
+.my-dropdown {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .dropdown-item{
+    &:active {
+      background-color: unset;
+    }
+  }
+
+  .badge {
+    padding: 5px;
+    margin-right: 5px;
+  }
+
+  .note-outside {
+    font-size: 10px;
+
+    &:hover {
+      background: unset
+    }
+  }
+}
