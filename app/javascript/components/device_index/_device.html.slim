@@ -1,0 +1,10 @@
+tr
+  td = device_counter + 1
+  td = device.name
+  td = device.position
+  td = device.area&.name
+  td
+    span.badge.badge-secondary Unused
+  td
+    = edit_link edit_device_path(device)
+    = delete_link device_path(device)

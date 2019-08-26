@@ -1,36 +1,9 @@
+= print_flash_message
+
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
   h1.h2 Devices
   .btn-toolbar.mb-2.mb-md-0
     .btn-group.mr-2
       = link_to 'Create device', new_device_path, class: 'btn btn-sm btn-outline-secondary'
 
-.table-responsive.my-table
-  table.table.table-striped.table-sm
-    thead
-      tr
-        th.border-top-0 SYSID
-        th.border-top-0 Name
-        th.border-top-0 Position
-        th.border-top-0 Area
-        th.border-top-0 Assigned
-        th.border-top-0 Action
-    tbody
-      tr
-        td 100
-        td Light
-        td 3
-        td C
-        td moderator, Minh Tang Q.
-        td
-          = link_to 'Edit', nil, class: 'text-warning pr-3'
-          = link_to 'Destroy', nil, class: 'text-danger'
-      tr
-        td 100
-        td Light
-        td 3
-        td C
-        td
-          span.badge.badge-secondary Unused
-        td
-          = link_to 'Edit', nil, class: 'text-warning pr-3'
-          = link_to 'Destroy', nil, class: 'text-danger'
+= c 'device_index'

@@ -1,6 +1,6 @@
 class DevicesController < ApplicationController
   before_action :authenticate
-  before_action :areas, only: %i[new create edit]
+  before_action :areas, only: %i[new create edit update]
 
   def index
     @devices = Device.order_alphabet
