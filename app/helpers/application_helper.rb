@@ -28,6 +28,16 @@ module ApplicationHelper
     button_tag t('save_another'), value: :save_another, name: :save_another, type: :submit, class: 'btn btn-info mr-2'
   end
 
+  def edit_link(path, klass = {})
+    klass = klass[:class].presence || 'text-warning pr-3'
+    link_to 'Edit', path, class: klass
+  end
+
+  def delete_link(path, klass = {})
+    klass = klass[:class].presence || 'text-danger'
+    link_to 'Destroy', path, class: klass, method: :delete, data: { confirm: t('confirm') }
+  end
+
   # Success: Lookup lazy I18 for controller
   def i18s(subject)
     t(".success", subject: subject)
