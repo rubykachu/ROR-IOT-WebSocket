@@ -1,35 +1,9 @@
+- provide :save_another, save_another_tag
+
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
   h1.h2 Create device
   .btn-toolbar.mb-2.mb-md-0
     .btn-group.mr-2
       = link_to 'List devices', devices_path, class: 'btn btn-sm btn-outline-secondary'
 
-form
-  .form-group.row
-    label.col-sm-2.col-form-label for="inputUsername"  Name
-    .col-sm-10
-      input#inputFullname.form-control placeholder="Name" type="text" /
-  .form-group.row
-    label.col-sm-2.col-form-label for="inputUsername"  Position
-    .col-sm-10
-      input#inputUsername.form-control placeholder="Position" type="text" /
-  .form-group.row
-    label.col-sm-2.col-form-label for="inputPassword"  Area
-    .col-sm-10
-      select#inputState.form-control
-        option selected="selected"  Choose...
-        option ...
-  .form-group.row
-    label.col-sm-2.col-form-label
-    .col-sm-10
-      button.btn.btn-sm.btn-outline-secondary.mr-2 type="button"
-        b> +
-        | Add new area
-
-  .col-sm-10.offset-sm-2.pl-0
-    button.btn.btn-primary.mr-2 type="button"  Save
-    button.btn.btn-info.mr-2 type="button"  Save and add another
-    = link_to 'Cancel', users_path, class: 'btn btn-secondary'
-
-
-
+= c 'device_form'

@@ -4,11 +4,11 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :username
       t.string :fullname
       t.string :password_digest
-      t.string :cookie_digest
+      t.string :remember_digest
       t.boolean :admin
       t.timestamps null: true
     end
     add_index :users, :username, unique: true
-    add_index :users, :cookie_digest
+    add_index :users, :remember_digest
   end
 end

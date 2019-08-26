@@ -19,6 +19,7 @@ class UniqueValidator < ActiveRecord::Validations::UniquenessValidator
       query = query.where(field => form.send(field))
     end
 
-    form.errors.add(attribute, :taken) if query.count > 0
+    message = options[:message].presence || :taken
+    form.errors.add(attribute, message) if query.count > 0
   end
 end

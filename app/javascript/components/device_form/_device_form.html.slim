@@ -1,0 +1,27 @@
+= form_with model: @device.record, local: true do |f|
+  .form-group.row
+    label.col-sm-2.col-form-label.form-required for="device_name"  Name
+    .col-sm-10
+      = f.text_field :name, class: 'form-control', placeholder: 'Name'
+      = error_message_inline @device, :name
+  .form-group.row
+    label.col-sm-2.col-form-label for="device_position"  Position
+    .col-sm-10
+      = f.text_field :position, class: 'form-control', placeholder: 'Position'
+      = error_message_inline @device, :position
+  .form-group.row
+    label.col-sm-2.col-form-label for="inputPassword"  Area
+    .col-sm-10
+      = f.select :area_id, @areas, { include_blank: '---' }, class: 'form-control'
+      = error_message_inline @device, :area_id
+  .form-group.row
+    label.col-sm-2.col-form-label
+    .col-sm-10
+      button.btn.btn-sm.btn-outline-secondary.mr-2 type="button"
+        b> +
+        | Add new area
+
+  .col-sm-10.offset-sm-2.pl-0
+    = f.submit 'Save', class: 'btn btn-primary mr-2'
+    = yield(:save_another)
+    = link_to 'Cancel', devices_path, class: 'btn btn-secondary'

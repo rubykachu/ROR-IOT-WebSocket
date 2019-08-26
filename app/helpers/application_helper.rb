@@ -1,6 +1,6 @@
 module ApplicationHelper
   def logined?
-    session[:app_iot].present? || cookies[:app_iot].present?
+    current_user.present?
   end
 
   def current_user
@@ -10,12 +10,12 @@ module ApplicationHelper
     end
 
     if cookies[:app_iot]
-      @current_user = User.find_by(cookie_digest: cookies[:app_iot])
+      @current_user = User.find_by(remember_digest: cookies[:app_iot])
     end
   end
 
   def hello_user
-    name = current_user.fullname.presence || current_user.username
+    name = current_user&.fullname.presence || current_user.username
     link_to "Hi, #{name}", nil, class: 'nav-link'
   end
 
