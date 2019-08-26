@@ -1,28 +1,10 @@
+- provide :save_another, save_another_tag
+= print_flash_message
+
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
   h1.h2 Create area
   .btn-toolbar.mb-2.mb-md-0
     .btn-group.mr-2
       = link_to 'List areas', areas_path, class: 'btn btn-sm btn-outline-secondary'
 
-form
-  .form-group.row
-    label.col-sm-2.col-form-label for="inputUsername"  Name
-    .col-sm-10
-      input#inputUsername.form-control placeholder="Username" type="text" /
-  .form-group.row
-    label.col-sm-2.col-form-label for="inputUsername"  Including device
-    .col-sm-10
-      textarea#inputUsername.form-control.disabled placeholder="Devices" type="text" disabled="disabled"
-  .form-group.row
-    label.col-sm-2.col-form-label for="inputUsername"  Belong to area
-    .col-sm-10
-      textarea#inputUsername.form-control.disabled placeholder="Area" type="text" disabled="disabled"
-
-  .col-sm-10.offset-sm-2.pl-0
-    button.btn.btn-primary.mr-2 type="button"  Save
-    button.btn.btn-info.mr-2 type="button"  Save and add another
-    = link_to 'Cancel', areas_path, class: 'btn btn-secondary'
-
-
-
-
+= c 'area_form'
