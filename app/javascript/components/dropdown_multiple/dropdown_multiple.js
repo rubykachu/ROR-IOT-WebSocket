@@ -1,3 +1,5 @@
+import "./dropdown_multiple.scss";
+
 $(function(){
   $(document).on('click', function(){
     if(!$(event.target).closest(".js-dropdown").length){
@@ -11,18 +13,25 @@ $(function(){
   });
 
   $('.js-dropdown .dropdown-item').on('click', function(){
-    let $checkbox = $(this).find('input[type="checkbox"]');
+    let $this  = $(this);
+    let disabled = $this.data('disabled');
+
+    if (disabled) { return false; }
+
+    let $checkbox = $this.find('input[type="checkbox"]');
     let $checked = $checkbox.prop("checked", !$checkbox.prop("checked"));
+    let checked_id = $checked.val();
+    let checked_text = $checked.data('text');
 
     if ( $checked.prop("checked") ) {
-      $('.my-tag').append( tag($checked.val()) );
+      $('.my-tag').append( tag(checked_id, checked_text) );
     }
     else {
-      $(`.my-tag .tag-${$checked.val()}`).remove();
+      $(`.my-tag .tag-${checked_id}`).remove();
     }
   });
 
-  function tag(val) {
-    return $(`<span class='badge badge-info tag-${val}'>${val}</span>`);
+  function tag(id, text) {
+    return $(`<span class='badge badge-info tag-${id}'>${text}</span>`);
   }
 })

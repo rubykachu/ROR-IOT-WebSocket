@@ -4,45 +4,4 @@
     .btn-group.mr-2
       = link_to 'List groups', areas_path, class: 'btn btn-sm btn-outline-secondary'
 
-form
-  .form-group.row
-    label.col-sm-2.col-form-label for="inputUsername"  Name
-    .col-sm-10
-      input#inputUsername.form-control placeholder="Name" type="text" /
-
-  .form-group.row
-    label.col-sm-2.col-form-label for="inputPassword"  Area
-    .col-sm-10
-      select#inputState.form-control
-        option selected="selected"  Choose...
-        option ...
-
-  .form-group.row
-    label.col-sm-2.col-form-label
-    .col-sm-10
-      button.btn.btn-sm.btn-outline-secondary.mr-2 type="button"
-        b> +
-        | Add new area
-
-  .form-group.row
-    label.col-sm-2.col-form-label Assign device
-    .col-sm-10
-      .js-dropdown.dropdown.my-dropdown
-        .form-control-plaintext.border.rounded.px-2.dropdown-toggle.my-tag
-          / span.badge.badge-info Hello
-        ul.dropdown-menu.w-100
-          li.dropdown-item
-            .custom-control.custom-checkbox
-              input#customCheck1.custom-control-input value="hello" type="checkbox" /
-              label.custom-control-label  Is admin
-          li.dropdown-item
-            .custom-control.custom-checkbox
-              input#customCheck2.custom-control-input value="goodbye" type="checkbox" /
-              label.custom-control-label  Is admin
-          li.dropdown-item.text-right.text-muted.note-outside
-            i click outside to close select box
-
-  .col-sm-10.offset-sm-2.pl-0
-    button.btn.btn-primary.mr-2 type="button"  Save
-    button.btn.btn-info.mr-2 type="button"  Save and add another
-    = link_to 'Cancel', areas_path, class: 'btn btn-secondary'
+= c 'group_form'

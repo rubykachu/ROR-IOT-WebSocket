@@ -1,0 +1,16 @@
+= form_with model: @group.record, local: true do |f|
+  .form-group.row
+    label.col-sm-2.col-form-label.form-required for="group_name"  Name
+    .col-sm-10
+      = f.text_field :name, class: 'form-control'
+      = error_message_inline @group, :name
+
+  .form-group.row
+    label.col-sm-2.col-form-label.form-required Devices
+    .col-sm-10
+      = render partial: 'components/dropdown_multiple/dropdown_multiple', locals: { data: @devices, f: f }
+
+  .col-sm-10.offset-sm-2.pl-0
+    = f.submit 'Save', class: 'btn btn-primary mr-2'
+    = yield(:save_another)
+    = link_to 'Cancel', groups_path, class: 'btn btn-secondary'
