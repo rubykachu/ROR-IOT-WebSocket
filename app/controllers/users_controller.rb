@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   def create
     @user = UserContracts::Create.new(permit_params)
     return render :new if @user.invalid?
-    return redirect_to save_another_path(users_path, new_user_path), notice: I18n.t('user.create.success') if @user.record.save
-    redirect_to new_user_path, alert: I18n.t('user.create.fail')
+    return redirect_to save_another_path(users_path, new_user_path), notice: i18s(:user) if @user.record.save
+    redirect_to new_user_path, alert: i18f(:user)
   end
 
   def edit
@@ -23,13 +23,13 @@ class UsersController < ApplicationController
   def update
     @user = UserContracts::Update.new(permit_params)
     return render :edit if @user.invalid?
-    return redirect_to users_path, notice: I18n.t('user.update.success') if @user.record.save
-    redirect_to edit_user_path(user.id), alert: I18n.t('user.create.fail')
+    return redirect_to users_path, notice: i18s(:user) if @user.record.save
+    redirect_to edit_user_path(user.id), alert: i18f(:user)
   end
 
   def destroy
-    return redirect_to users_path, notice: I18n.t('user.destroy.success') if user.destroy
-    redirect_to users_path, alert: I18n.t('user.destroy.fail')
+    return redirect_to users_path, notice: i18s(:user) if user.destroy
+    redirect_to users_path, alert: i18f(:user)
   end
 
   private
