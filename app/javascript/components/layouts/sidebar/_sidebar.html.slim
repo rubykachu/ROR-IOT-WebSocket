@@ -1,21 +1,11 @@
 nav.col-md-2.d-none.d-md-block.bg-light.sidebar
   .sidebar-sticky
-    ul.nav.flex-column
-      li.nav-item
-        = link_to 'Area', areas_path, class: 'nav-link'
-      li.nav-item
-        = link_to 'Device', devices_path, class: 'nav-link'
+    = sidebar(:other)
 
     h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
-      span Assign device to the area
-
-    ul.nav.flex-column.mb-2
-      li.nav-item
-        = link_to 'Group', groups_path, class: 'nav-link'
+      span = I18n.t('sidebar.title_group')
+    = sidebar(:group)
 
     h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
-      span Management users
-
-    ul.nav.flex-column.mb-2
-      li.nav-item
-        = link_to 'User', users_path, class: 'nav-link active'
+      span = I18n.t('sidebar.title_user')
+    = sidebar(:user)
