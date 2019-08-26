@@ -15,3 +15,10 @@ en:
     destroy:
       success: Delete user successfully
       fail: Delete user failed
+  sidebar:
+    area: Area
+    device: Device
+    group: Group
+    user: User
+    title_user: Management users
+    title_group: Assign device to the area
