@@ -9,6 +9,6 @@ class UserContracts::Update < UserContracts::Base
     admin_ids = User.admin.ids
     return if admin_ids.size > 1
     return if admin_ids.exclude?(record.id)
-    errors.add(:admin, I18n.t('user.update.at_least_1_admin'))
+    errors.add :admin, I18n.t('errors.messages.at_least_1_admin')
   end
 end

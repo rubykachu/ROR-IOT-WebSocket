@@ -1,0 +1,4 @@
+en:
+  errors:
+    messages:
+      at_least_1_admin: Must have at least one admin
