@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
 
   def authenticate
     return redirect_to sign_in_path unless logined?
-    current_user
   end
 
   private

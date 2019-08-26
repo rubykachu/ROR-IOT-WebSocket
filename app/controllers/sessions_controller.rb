@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
   def create_cookie
     cookies.signed[:app_iot] = { value: SecureRandom.base64(10), expires: Time.current + 3.days }
     user = User.find_by_username(permit_params[:username])
-    user.update(cookie_digest: cookies[:app_iot])
+    user.update(remember_digest: cookies[:app_iot])
   end
 
   def check_login

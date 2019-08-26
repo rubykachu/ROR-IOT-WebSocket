@@ -14,3 +14,5 @@ en:
     <<: *action
   users:
     <<: *action
+  devices:
+    <<: *action
