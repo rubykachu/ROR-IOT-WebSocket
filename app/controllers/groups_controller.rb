@@ -13,7 +13,14 @@ class GroupsController < ApplicationController
   def create
     @group = GroupContracts::Base.new(permit_params)
     return render :new if @group.invalid?
-    return redirect_to save_another_path(groups_path, new_Group_path), notice: i18s(:group) if @group.record.save
+    Group.transaction do
+      @group.record.save!
+      permit_params[:device_ids].each do |id|
+        @group.record.devices_groups.create!(device_id: id)
+      end
+    end
+    redirect_to save_another_path(groups_path, new_group_path), notice: i18s(:group)
+  rescue
     redirect_to new_group_path, alert: i18f(:group)
   end
 
@@ -37,7 +44,7 @@ class GroupsController < ApplicationController
 
   def permit_params
     record = params[:id] ? group : Group.new
-    params.require(:group).permit(:name, :position, :area_id).merge(record: record)
+    params.require(:group).permit(:name, device_ids: []).merge(record: record)
   end
 
   def group

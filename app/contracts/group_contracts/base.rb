@@ -1,8 +1,12 @@
 class GroupContracts::Base < ApplicationContract
-  attribute :record,    Group
-  attribute :area_id,   Integer
-  attribute :device_id, Integer
+  attribute :record,     Group
+  attribute :name,       String
+  attribute :device_ids, Array[Integer]
 
-  validates :name, :area_id, :device_id, presence: true
-  validates :name, length: { maximum: 50 }
+  validates :name, :device_ids, presence: true
+  validates :name, unique: true, length: { maximum: 50 }
+  validates :device_ids, exists: {
+                           model: Device.name,
+                           in_array: true
+                         }
 end

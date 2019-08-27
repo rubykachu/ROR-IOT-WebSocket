@@ -8,7 +8,8 @@
   .form-group.row
     label.col-sm-2.col-form-label.form-required Devices
     .col-sm-10
-      = render partial: 'components/dropdown_multiple/dropdown_multiple', locals: { data: @devices, f: f }
+      = render partial: 'components/dropdown_multiple/dropdown_multiple', locals: { devices: @devices }
+      = error_message_inline @group, :device_ids
 
   .col-sm-10.offset-sm-2.pl-0
     = f.submit 'Save', class: 'btn btn-primary mr-2'

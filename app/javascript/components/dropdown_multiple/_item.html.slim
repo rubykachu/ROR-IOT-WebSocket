@@ -9,5 +9,5 @@
 
 li.dropdown-item data-disabled="#{disabled}"
   .custom-control.custom-checkbox
-    = f.check_box :device_id, { class: 'custom-control-input', disabled: disabled, data: { text: text } }, item.id
+    = check_box_tag 'group[device_ids][]', item.id, false, { class: 'custom-control-input', disabled: disabled, data: { text: text } }
     = label_tag
