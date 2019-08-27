@@ -1,6 +1,7 @@
 import "./dropdown_multiple.scss";
 
 $(function(){
+
   $(document).on('click', function(){
     if(!$(event.target).closest(".js-dropdown").length){
       $(".dropdown-menu").slideUp("fast");
@@ -24,11 +25,18 @@ $(function(){
     let checkbox_text = $checkbox.data('text');
 
     if ( $checked.prop("checked") ) {
-      $('.my-tag').append( tag(checkbox_id, checkbox_text) );
+      $(".my-tag").append( tag(checkbox_id, checkbox_text) );
     }
     else {
       $(`.my-tag .tag-${checkbox_id}`).remove();
     }
+  });
+
+  $('.dropdown-item input:checkbox:checked').each(function(e) {
+    let $this = $(this);
+    let checkbox_id = $this.val();
+    let checkbox_text = $this.data('text')
+    $(".my-tag").append( tag(checkbox_id, checkbox_text) );
   });
 
   function tag(id, text) {
