@@ -1,4 +1,4 @@
-import "./dropdown_multiple.scss";
+import "./dropdown_multiple_device.scss";
 
 $(function(){
 

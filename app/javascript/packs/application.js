@@ -8,7 +8,7 @@ require("@rails/activestorage").start()
 require("channels")
 import "bootstrap";
 import "../stylesheets/application"
-import "components/dropdown_multiple/dropdown_multiple"
+import "components/dropdown_multiple_device/dropdown_multiple_device"
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

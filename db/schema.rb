@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_102240) do
+ActiveRecord::Schema.define(version: 2019_08_27_153231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 2019_08_26_102240) do
     t.datetime "updated_at", precision: 6
     t.index ["remember_digest"], name: "index_users_on_remember_digest"
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "users_groups", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.datetime "created_at", precision: 6
+    t.datetime "updated_at", precision: 6
+    t.index ["group_id"], name: "index_users_groups_on_group_id"
+    t.index ["user_id", "group_id"], name: "index_users_groups_on_user_id_and_group_id", unique: true
+    t.index ["user_id"], name: "index_users_groups_on_user_id"
   end
 
   add_foreign_key "devices", "areas"
