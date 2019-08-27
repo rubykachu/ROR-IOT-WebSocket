@@ -1,5 +1,6 @@
 en:
   errors:
     messages:
+      dont_exist: don't exist
       at_least_1_admin: must have at least one admin
       already_exists_in_position: already exists in this position

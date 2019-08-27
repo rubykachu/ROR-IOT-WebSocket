@@ -5,12 +5,13 @@ class DeviceContracts::Base < ApplicationContract
   attribute :area_id,  Integer
 
   validates :name, presence: true, length: { maximum: 50 }
-  validates :position, allow_blank: true, numericality: { only_integer: true }
-  validates :area_id, exists: true, allow_blank: true
+  validates :position, presence: true, numericality: { only_integer: true }, if: Proc.new { |d| d.area_id.present? }
+  validates :area_id, exists: true, presence: true, if: Proc.new { |d| d.position.present? }
+
   validates :name, unique: {
                      case_sensitive: false,
                      message: I18n.t('errors.messages.already_exists_in_position'),
-                     scope: [:name, :position]
+                     scope: [:name, :position, :area_id]
                    },
-                   if: Proc.new { |d| d.position.present? }
+                   if: Proc.new { |d| d.position.present? && d.area_id.present? }
 end

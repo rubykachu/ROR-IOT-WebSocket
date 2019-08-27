@@ -7,6 +7,6 @@ class CreateDevices < ActiveRecord::Migration[6.0]
       t.timestamps null: true
     end
 
-    add_index :devices, [:name, :position], unique: true
+    add_index :devices, [:name, :position, :area_id], unique: true
   end
 end

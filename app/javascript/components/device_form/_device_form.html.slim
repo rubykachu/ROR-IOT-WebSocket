@@ -5,15 +5,15 @@
       = f.text_field :name, class: 'form-control'
       = error_message_inline @device, :name
   .form-group.row
-    label.col-sm-2.col-form-label for="device_position"  Position
-    .col-sm-10
-      = f.text_field :position, class: 'form-control'
-      = error_message_inline @device, :position
-  .form-group.row
     label.col-sm-2.col-form-label for="inputPassword"  Area
     .col-sm-10
       = f.select :area_id, @areas, { include_blank: '---' }, class: 'form-control'
       = error_message_inline @device, :area_id
+  .form-group.row
+    label.col-sm-2.col-form-label for="device_position"  Position area
+    .col-sm-10
+      = f.text_field :position, class: 'form-control'
+      = error_message_inline @device, :position
   .form-group.row
     label.col-sm-2.col-form-label
     .col-sm-10

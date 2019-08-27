@@ -28,7 +28,12 @@ class AreasController < ApplicationController
   end
 
   def destroy
-    return redirect_to areas_path, notice: i18s(:area) if area.destroy
+    Area.transaction do
+      area.devices.each { |device| device.update!(area_id: nil) }
+      area.destroy!
+    end
+    redirect_to areas_path, notice: i18s(:area)
+  rescue
     redirect_to areas_path, alert: i18f(:area)
   end
 
