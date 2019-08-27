@@ -1,4 +1,4 @@
-- checked = params.dig(:group, :device_ids)&.include?(item.id.to_s)
+- checked = device_ids&.include?(item.id).presence || params.dig(:group, :device_ids)&.include?(item.id.to_s)
 - if item.area.present?
   - text = "#{item.name} ##{item.position} <small class='text-warning'>#{item.area.name}</small>"
   - label_tag = "<label class='custom-control-label'><span class='text-capitalize'>#{item.name}</span> <small class='text-muted font-italic'>is position at <b>#{item.position}</b> belong to area <b>#{item.area.name}</b></small></label>".html_safe

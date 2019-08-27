@@ -8,6 +8,7 @@ html
       .row
         = c 'layouts/sidebar'
         main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 role="main"
+          = print_flash_message
           = yield
     = javascript_pack_tag 'application'
 
