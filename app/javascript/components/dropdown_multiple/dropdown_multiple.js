@@ -20,14 +20,14 @@ $(function(){
 
     let $checkbox = $this.find('input[type="checkbox"]');
     let $checked = $checkbox.prop("checked", !$checkbox.prop("checked"));
-    let checked_id = $checked.val();
-    let checked_text = $checked.data('text');
+    let checkbox_id = $checkbox.val();
+    let checkbox_text = $checkbox.data('text');
 
     if ( $checked.prop("checked") ) {
-      $('.my-tag').append( tag(checked_id, checked_text) );
+      $('.my-tag').append( tag(checkbox_id, checkbox_text) );
     }
     else {
-      $(`.my-tag .tag-${checked_id}`).remove();
+      $(`.my-tag .tag-${checkbox_id}`).remove();
     }
   });
 

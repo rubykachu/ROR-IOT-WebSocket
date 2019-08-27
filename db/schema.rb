@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_102240) do
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
     t.index ["area_id"], name: "index_devices_on_area_id"
-    t.index ["name", "position"], name: "index_devices_on_name_and_position", unique: true
+    t.index ["name", "position", "area_id"], name: "index_devices_on_name_and_position_and_area_id", unique: true
   end
 
   create_table "devices_groups", force: :cascade do |t|
