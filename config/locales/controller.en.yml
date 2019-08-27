@@ -16,3 +16,5 @@ en:
     <<: *action
   devices:
     <<: *action
+  groups:
+    <<: *action
