@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate
+  before_action :groups, only: %i[new create edit update]
+
 
   def index
     @users = User.order_latest
@@ -12,7 +14,14 @@ class UsersController < ApplicationController
   def create
     @user = UserContracts::Create.new(permit_params)
     return render :new if @user.invalid?
-    return redirect_to save_another_path(users_path, new_user_path), notice: i18s(:user) if @user.record.save
+
+    User.transaction do
+      @user.record.save!
+      insert_all_users_groups!(@user.group_ids)
+    end
+
+    redirect_to save_another_path(users_path, new_user_path), notice: i18s(:user)
+  rescue
     redirect_to new_user_path, alert: i18f(:user)
   end
 
@@ -36,10 +45,18 @@ class UsersController < ApplicationController
 
   def permit_params
     record = params[:id] ? user : User.new
-    params.require(:user).permit(:username, :fullname, :password, :admin).merge(record: record)
+    params.require(:user).permit(:username, :fullname, :password, :admin, group_ids: []).merge(record: record)
   end
 
   def user
     @object ||= User.find(params[:id])
+  end
+
+  def groups
+    @groups ||= Group.order_alphabet
+  end
+
+  def insert_all_users_groups!(group_ids)
+    group_ids.each { |group_id| binding.pry; @user.record.users_groups.build(group_id: group_id).save! }
   end
 end

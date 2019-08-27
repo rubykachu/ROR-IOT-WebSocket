@@ -1,0 +1,9 @@
+.js-dropdown.dropdown.my-dropdown
+  .form-control-plaintext.border.rounded.px-2.dropdown-toggle.my-tag
+    / span.badge.badge-info
+    /   | Hello
+    /   small.text-warning< #C3
+  ul.dropdown-menu.w-100
+    = render partial: 'components/dropdown_multiple_group/group', collection: groups, locals: { group_ids: group_ids }
+    li.dropdown-item.text-right.text-muted.note-outside
+      i click outside to close select box
