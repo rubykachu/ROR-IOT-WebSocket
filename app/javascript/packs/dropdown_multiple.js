@@ -1,7 +1,4 @@
-import "./dropdown_multiple_device.scss";
-
 $(function(){
-
   $(document).on('click', function(){
     if(!$(event.target).closest(".js-dropdown").length){
       $(".dropdown-menu").slideUp("fast");

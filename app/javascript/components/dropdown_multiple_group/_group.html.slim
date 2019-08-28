@@ -1,0 +1,7 @@
+- checked = group_ids&.include?(group.id).presence || params.dig(:user, :group_ids)&.include?(group.id.to_s)
+
+li.dropdown-item
+  .custom-control.custom-checkbox
+    = check_box_tag 'user[group_ids][]', group.id, checked, { class: 'custom-control-input', id: group.id, data: { text: group.name } }
+    label.custom-control-label
+      span.text-capitalize = group.name
