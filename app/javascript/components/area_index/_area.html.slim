@@ -2,7 +2,8 @@ tr
   td = area_counter + 1
   td = area.name
   td
-    = link_to 'see more', nil
+    = link_to 'see more', nil, data: { toggle: 'modal', target: "#area-modal-#{area.id}" }
+    = render partial: 'components/area_index/modal', locals: { area: area, devices: area.devices }
   td
     = edit_link edit_area_path(area)
     = delete_link area_path(area)

@@ -16,3 +16,4 @@ import "./dropdown_multiple"
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+// $('.area-modal-3').modal('show')

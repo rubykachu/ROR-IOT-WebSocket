@@ -2,7 +2,7 @@ class AreasController < ApplicationController
   before_action :authenticate
 
   def index
-    @areas = Area.order_alphabet
+    @areas = Area.common_order.common_includes
   end
 
   def new
