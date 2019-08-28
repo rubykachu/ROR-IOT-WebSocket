@@ -62,7 +62,7 @@ class GroupsController < ApplicationController
   end
 
   def devices
-    @devices ||= Device.order_alphabet.includes(:area)
+    @devices ||= Device.common_order.includes(:area)
   end
 
   def insert_all_devices_groups!(device_ids)
