@@ -15,7 +15,7 @@ class UserContracts::Base < ApplicationContract
                          },
                          allow_blank: true
 
-  def after_valid
+  def before_valid
     record.password = password if password.present?
   end
 end

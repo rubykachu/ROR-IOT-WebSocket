@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   before_action :devices, only: %i[new create edit update]
 
   def index
-    @groups = Group.order_alphabet
+    @groups = Group.order_alphabet.common_includes
   end
 
   def new
@@ -62,7 +62,7 @@ class GroupsController < ApplicationController
   end
 
   def devices
-    @devices ||= Device.order_alphabet.includes(:area)
+    @devices ||= Device.common_order.includes(:area)
   end
 
   def insert_all_devices_groups!(device_ids)

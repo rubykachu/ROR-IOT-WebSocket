@@ -3,7 +3,7 @@ class DevicesController < ApplicationController
   before_action :areas, only: %i[new create edit update]
 
   def index
-    @devices = Device.order_alphabet
+    @devices = Device.common_order.common_includes
   end
 
   def new
@@ -45,6 +45,6 @@ class DevicesController < ApplicationController
   end
 
   def areas
-    @areas ||= Area.order_alphabet.pluck(:name, :id)
+    @areas ||= Area.common_order.pluck(:name, :id)
   end
 end

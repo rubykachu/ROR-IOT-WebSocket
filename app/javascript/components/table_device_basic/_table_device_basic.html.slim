@@ -1,0 +1,16 @@
+- table_class ||= nil
+.table-responsive
+  table class="table table-bordered #{table_class}"
+    thead
+      tr.bg-unset
+        th #
+        th Name
+        th Position
+        th Area
+    tbody
+      - if devices.present?
+        = render partial: 'components/table_device_basic/device', collection: devices
+      - else
+        tr
+          td colspan="4"
+            i.text-muted Empty data

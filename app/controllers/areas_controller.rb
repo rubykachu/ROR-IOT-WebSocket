@@ -2,7 +2,7 @@ class AreasController < ApplicationController
   before_action :authenticate
 
   def index
-    @areas = Area.order_alphabet
+    @areas = Area.common_order.common_includes
   end
 
   def new
@@ -29,7 +29,7 @@ class AreasController < ApplicationController
 
   def destroy
     Area.transaction do
-      area.devices.each { |device| device.update!(area_id: nil) }
+      area.devices.each { |device| device.update!(area_id: nil, position: nil) }
       area.destroy!
     end
     redirect_to areas_path, notice: i18s(:area)

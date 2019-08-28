@@ -1,20 +1,17 @@
 = form_with model: @area.record, local: true do |f|
   .form-group.row
     label.col-sm-2.col-form-label.form-required for="area_name" Name
-    .col-sm-10
+    .col-sm-5
       = f.text_field :name, class: 'form-control'
       = error_message_inline @area, :name
 
-  .form-group.row
-    label.col-sm-2.col-form-label for="inputUsername"  Including devices
-    .col-sm-10
-      textarea#inputUsername.form-control.disabled type="text" disabled="disabled"
-  .form-group.row
-    label.col-sm-2.col-form-label for="inputUsername"  Belong to area
-    .col-sm-10
-      textarea#inputUsername.form-control.disabled type="text" disabled="disabled"
+  - if @area.record.id
+    .form-group.row
+      label.col-sm-2.col-form-label for="inputUsername"  List devices
+      .col-sm-5
+        = render partial: 'components/table_device_basic/table_device_basic', locals: { area: @area.record, devices: @area.record.devices, table_class: 'table-sm table-striped' }
 
-  .col-sm-10.offset-sm-2.pl-0
+  .col-sm-5.offset-sm-2.pl-0
     = f.submit 'Save', class: 'btn btn-primary mr-2'
     = yield(:save_another)
     = link_to 'Cancel', areas_path, class: 'btn btn-secondary'
