@@ -7,4 +7,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :devices
+
+  namespace :mqtt do
+    get 'acl' => 'access_controls#index'
+  end
 end

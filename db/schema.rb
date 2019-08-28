@@ -17,9 +17,10 @@ ActiveRecord::Schema.define(version: 2019_08_28_102455) do
 
   create_table "devices", force: :cascade do |t|
     t.string "name"
-    t.string "code"
+    t.string "code", null: false
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
+    t.index ["code"], name: "index_devices_on_code", unique: true
   end
 
   create_table "users", force: :cascade do |t|
