@@ -1,8 +1,5 @@
 en:
   sidebar:
-    area: Area
     device: Device
-    group: Group
     user: User
     title_user: User management
-    title_group: Group device management

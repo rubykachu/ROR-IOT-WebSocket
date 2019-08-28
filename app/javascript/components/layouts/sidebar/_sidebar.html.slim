@@ -1,11 +1,4 @@
 nav.col-md-2.d-none.d-md-block.bg-light.sidebar
   .sidebar-sticky
-    = sidebar(:other)
-
-    h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
-      span = I18n.t('sidebar.title_group')
-    = sidebar(:group)
-
-    h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
-      span = I18n.t('sidebar.title_user')
-    = sidebar(:user)
+    = sidebar
+    / h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted

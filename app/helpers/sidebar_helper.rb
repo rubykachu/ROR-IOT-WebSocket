@@ -1,11 +1,5 @@
 module SidebarHelper
-  def sidebar(type)
-    data =
-      case type
-      when :other then data_other
-      when :group then data_group
-      when :user  then data_user
-      end
+  def sidebar
     content_tag :ul, safe_join(list_items(data)), class: 'nav flex-column'
   end
 
@@ -15,38 +9,18 @@ module SidebarHelper
   # path: new_translation_path,
   # controller: 'translations#new',
   # icon: 'fa icon icon-language'
-  def data_other
+  def data
     [
       {
-        text: I18n.t('sidebar.area'),
-        path: areas_path,
-        controller: %w[areas#new areas#index areas#edit]
+        text: I18n.t('sidebar.user'),
+        path: users_path,
+        controller: %w[users#new users#index users#edit]
       },
       {
         text: I18n.t('sidebar.device'),
         path: devices_path,
         controller: %w[devices#new devices#index devices#edit]
       },
-    ]
-  end
-
-  def data_group
-    [
-      {
-        text: I18n.t('sidebar.group'),
-        path: groups_path,
-        controller: %w[groups#new groups#index groups#edit]
-      }
-    ]
-  end
-
-  def data_user
-    [
-      {
-        text: I18n.t('sidebar.user'),
-        path: users_path,
-        controller: %w[users#new users#index users#edit]
-      }
     ]
   end
 

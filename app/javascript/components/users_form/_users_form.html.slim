@@ -25,11 +25,6 @@
         label.custom-control-label for="user_admin"  Admin
       = error_message_inline @user, :admin
 
-  .form-group.row
-    label.col-sm-2.col-form-label for="inputPassword"  Groups
-    .col-sm-10
-      = render partial: 'components/dropdown_multiple_group/dropdown_multiple_group', locals: { groups: @groups, group_ids: @group_ids }
-
   .col-sm-10.offset-sm-2.pl-0
     = f.submit t('save'), class: 'btn btn-primary mr-2'
     = yield :save_another

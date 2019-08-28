@@ -10,11 +10,7 @@ en:
     destroy:
       success: Delete %{subject} successfully
       fail: Delete %{subject} failed
-  areas:
-    <<: *action
   users:
     <<: *action
   devices:
-    <<: *action
-  groups:
     <<: *action
