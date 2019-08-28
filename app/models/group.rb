@@ -6,4 +6,5 @@ class Group < ApplicationRecord
   has_many :users, through: :users_groups
 
   scope :order_alphabet, -> { order(name: :asc) }
+  scope :common_includes, -> { includes(:users, :devices) }
 end

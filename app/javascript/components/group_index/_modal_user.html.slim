@@ -1,0 +1,11 @@
+div class="modal fade" id="group-modal-user-#{group.id}" aria-hidden="true" aria-labelledby="" role="dialog" tabindex="-1"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5.modal-title = "This <span class='text-warning'>#{group.name}</span> is being managed by #{count_pluralize(users.size, :people)}".html_safe
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true"  ×
+
+      .modal-body
+        = render partial: 'components/table_user_basic/table_user_basic', locals: { users: users }
+

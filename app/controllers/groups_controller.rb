@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   before_action :devices, only: %i[new create edit update]
 
   def index
-    @groups = Group.order_alphabet
+    @groups = Group.order_alphabet.common_includes
   end
 
   def new

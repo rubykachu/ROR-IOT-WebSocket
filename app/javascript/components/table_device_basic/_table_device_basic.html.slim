@@ -6,10 +6,11 @@
         th #
         th Name
         th Position
+        th Area
     tbody
       - if devices.present?
         = render partial: 'components/table_device_basic/device', collection: devices
       - else
         tr
-          td colspan="3"
+          td colspan="4"
             i.text-muted Empty data

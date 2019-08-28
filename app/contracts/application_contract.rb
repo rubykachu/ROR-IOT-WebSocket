@@ -5,16 +5,17 @@ class ApplicationContract
 
   def self.new(options)
     object = super
+    strip_params!(options)
     object.after_initialize
     object
   end
 
   def after_initialize; end
-  def after_valid; end
+  def before_valid; end
 
   def invalid?
+    self.before_valid
     clean_attributes
-    self.after_valid
     !valid?
   end
 
@@ -23,5 +24,11 @@ class ApplicationContract
     except_attributes = attributes.keys - record_attributes
     record.assign_attributes(attributes.except(*except_attributes))
     record
+  end
+
+  private
+
+  def self.strip_params!(attributes)
+    attributes.except(:record).values.flatten.collect &:squish!
   end
 end

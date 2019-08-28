@@ -18,7 +18,6 @@ class UniqueValidator < ActiveRecord::Validations::UniquenessValidator
       # add condition to only check unique value with the same scope
       query = query.where(field => form.send(field))
     end
-
     message = options[:message].presence || :taken
     form.errors.add(attribute, message) if query.count > 0
   end

@@ -11,7 +11,7 @@ class DeviceContracts::Base < ApplicationContract
   validates :name, unique: {
                      case_sensitive: false,
                      message: I18n.t('errors.messages.already_exists_in_position'),
-                     scope: [:name, :position, :area_id]
+                     scope: [:position, :area_id]
                    },
                    if: Proc.new { |d| d.position.present? && d.area_id.present? }
 end

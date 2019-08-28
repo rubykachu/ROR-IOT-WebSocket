@@ -47,4 +47,8 @@ module ApplicationHelper
   def i18f(subject)
     t(".fail", subject: subject)
   end
+
+  def count_pluralize(count, string)
+    "#{count} #{string.to_s.pluralize(count)}"
+  end
 end
