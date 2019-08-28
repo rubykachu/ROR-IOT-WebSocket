@@ -51,4 +51,12 @@ module ApplicationHelper
   def count_pluralize(count, string)
     "#{count} #{string.to_s.pluralize(count)}"
   end
+
+  def status_200
+    render json: { status: 200 }, status: 200
+  end
+
+  def status_401
+    render json: { status: 401 }, status: 401
+  end
 end
