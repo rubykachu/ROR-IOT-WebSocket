@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   def create
     @user = UserContracts::Create.new(permit_params)
     return render :new if @user.invalid?
-
     User.transaction do
       @user.record.save!
       insert_all_users_groups!(@user.group_ids)
@@ -27,12 +26,24 @@ class UsersController < ApplicationController
 
   def edit
     @user = UserContracts::Base.new(record: user)
+    @group_ids = @user.record.users_groups.pluck(:group_id)
   end
 
   def update
     @user = UserContracts::Update.new(permit_params)
     return render :edit if @user.invalid?
-    return redirect_to users_path, notice: i18s(:user) if @user.record.save
+    Group.transaction do
+      @user.record.save!
+      old_id    = @user.record.users_groups.pluck(:group_id)
+      new_id    = @user.group_ids
+      insert_id = new_id - old_id
+      remove_id = old_id - new_id
+      destroy_all_users_groups!(remove_id)
+      insert_all_users_groups!(insert_id)
+    end
+
+    redirect_to save_another_path(users_path, new_user_path), notice: i18s(:user)
+  rescue
     redirect_to edit_user_path(user.id), alert: i18f(:user)
   end
 
@@ -57,6 +68,10 @@ class UsersController < ApplicationController
   end
 
   def insert_all_users_groups!(group_ids)
-    group_ids.each { |group_id| binding.pry; @user.record.users_groups.build(group_id: group_id).save! }
+    group_ids.each { |group_id| @user.record.users_groups.create!(group_id: group_id) }
+  end
+
+  def destroy_all_users_groups!(group_ids)
+    @user.record.users_groups.where(group_id: group_ids).destroy_all
   end
 end

@@ -32,10 +32,13 @@ class GroupsController < ApplicationController
     return render :edit if @group.invalid?
     Group.transaction do
       @group.record.save!
-      device_keep_insert     = @group.device_ids
-      device_will_be_removed = @group.record.devices_groups.pluck(:device_id) - device_keep_insert
-      destroy_all_devices_groups!(device_will_be_removed)
-      insert_all_devices_groups!(device_keep_insert)
+      old_id    = @group.record.devices_groups.pluck(:device_id)
+      new_id    = @group.device_ids
+      insert_id = new_id - old_id
+      remove_id = old_id - new_id
+
+      destroy_all_devices_groups!(remove_id)
+      insert_all_devices_groups!(insert_id)
     end
     redirect_to save_another_path(groups_path, edit_group_path(@group.record)), notice: i18s(:group)
   rescue
