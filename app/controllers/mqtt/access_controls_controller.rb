@@ -6,9 +6,15 @@ class Mqtt::AccessControlsController < ApiController
   # case 4: at/+/001/            => 200 || 401 Get device
   # case 5: at/#/001/            => 200 || 401 Get device
   # case 6: at/#/#/              => 200 || 401 Get device
+<<<<<<< HEAD
   # case 7: at/#/+/              => 200 || 401 Get device
   # case 8: at/+/+/              => 200 || 401 Get device
   # case 9: at/+/#/              => 200 || 401 Get device
+=======
+  # case 7: at/+/+/              => 200 || 401 Get device
+  # case 8: at/+/#/              => 200 || 401 Get device
+  # case 9: at/#/+/              => 200 || 401 Get device
+>>>>>>> 1dbc24c3af5ee6fcb4e6096047a93d9def5a823b
   def index
     format_params
     return status_200 if user.device?(name, code)
