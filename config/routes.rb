@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   namespace :mqtt do
     get 'acl' => 'access_controls#index'
+    post 'auth' => 'auth#create'
   end
 end
