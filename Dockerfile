@@ -1,4 +1,4 @@
-FROM ruby:2.6.2
+FROM ruby:2.6.0
 
 # replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
@@ -9,11 +9,12 @@ RUN mkdir -p /app
 RUN mkdir -p /usr/local/nvm
 WORKDIR /app
 
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 
 RUN node -v
 RUN npm -v
+RUN npm rebuild node-sass
 
 # Copy the Gemfile as well as the Gemfile.lock and install
 # the RubyGems. This is a separate step so the dependencies
