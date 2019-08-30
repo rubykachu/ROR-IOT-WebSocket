@@ -1,5 +1,10 @@
 FROM ruby:2.6.0
 
+ENV BUNDLE_PATH=/bundle \
+    BUNDLE_BIN=/bundle/bin \
+    GEM_HOME=/bundle
+ENV PATH="${BUNDLE_BIN}:${PATH}"
+
 # replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
@@ -23,7 +28,7 @@ RUN npm rebuild node-sass
 COPY Gemfile Gemfile.lock package.json yarn.lock ./
 RUN gem install bundler -v 1.17.2
 RUN gem install foreman -v 0.85.0
-RUN bundle install --verbose --jobs 20 --retry 5
+# RUN bundle install --verbose --jobs 20 --retry 5
 
 RUN npm install -g yarn
 RUN yarn install --check-files
@@ -35,7 +40,10 @@ COPY . ./
 # from the outside.
 EXPOSE 3000
 
+RUN chmod +x ./start-service.sh
+
 # The main command to run when the container starts. Also
 # tell the Rails dev server to bind to all interfaces by
 # default.
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+# CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["./start-service.sh"]
