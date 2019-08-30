@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    container_name: postgres_iot
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    volumes:
+      - ./pg-data:/var/lib/postgresql/data
+  web:
+    build: .
+    image: web_iot:v1
+    container_name: web_iot
+    command: bash -c "./start-service.sh"
+    volumes:
+      - .:/app
+    ports:
+      - '3000:5000'
+    environment:
+      RAILS_ENV: development
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+# volumes:
+#   pg-data:
