@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   delete '/sign-out' => 'sessions#destroy'
 
   resources :users
-  resources :devices
+  resources :logs, only: :index
 
   namespace :mqtt do
     get 'acl' => 'access_controls#index'

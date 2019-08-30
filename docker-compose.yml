@@ -1,6 +1,6 @@
 version: '3'
 services:
-  db:
+  database:
     image: postgres
     container_name: postgres_iot
     ports:
@@ -24,6 +24,6 @@ services:
     tty: true
     stdin_open: true
     depends_on:
-      - db
+      - database
 # volumes:
 #   pg-data:

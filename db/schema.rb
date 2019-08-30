@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_102455) do
+ActiveRecord::Schema.define(version: 2019_08_30_065623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 2019_08_28_102455) do
     t.index ["code"], name: "index_devices_on_code", unique: true
   end
 
+  create_table "logs", force: :cascade do |t|
+    t.string "ip_address"
+    t.string "params"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "fullname"
@@ -33,6 +40,16 @@ ActiveRecord::Schema.define(version: 2019_08_28_102455) do
     t.datetime "updated_at", precision: 6
     t.index ["remember_digest"], name: "index_users_on_remember_digest"
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "users_devices", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "device_id"
+    t.datetime "created_at", precision: 6
+    t.datetime "updated_at", precision: 6
+    t.index ["device_id"], name: "index_users_devices_on_device_id"
+    t.index ["user_id", "device_id"], name: "index_users_devices_on_user_id_and_device_id", unique: true
+    t.index ["user_id"], name: "index_users_devices_on_user_id"
   end
 
 end
