@@ -25,13 +25,13 @@ RUN npm rebuild node-sass
 # the RubyGems. This is a separate step so the dependencies
 # will be cached unless changes to one of those two files
 # are made.
-COPY Gemfile Gemfile.lock package.json yarn.lock ./
+COPY Gemfile Gemfile.lock package.json yarn.lock start-service.sh ./
 RUN gem install bundler -v 1.17.2
 RUN gem install foreman -v 0.85.0
+RUN chmod +x ./start-service.sh
 # RUN bundle install --verbose --jobs 20 --retry 5
 
 RUN npm install -g yarn
-RUN yarn install --check-files
 
 # Copy the main application.
 COPY . ./
@@ -39,8 +39,6 @@ COPY . ./
 # Expose port 3000 to the Docker host, so we can access it
 # from the outside.
 EXPOSE 3000
-
-RUN chmod +x ./start-service.sh
 
 # The main command to run when the container starts. Also
 # tell the Rails dev server to bind to all interfaces by
