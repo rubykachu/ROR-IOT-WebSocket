@@ -17,9 +17,9 @@ module SidebarHelper
         controller: %w[users#new users#index users#edit]
       },
       {
-        text: I18n.t('sidebar.device'),
-        path: devices_path,
-        controller: %w[devices#new devices#index devices#edit]
+        text: I18n.t('sidebar.log'),
+        path: logs_path,
+        controller: %w[logs#index]
       },
     ]
   end

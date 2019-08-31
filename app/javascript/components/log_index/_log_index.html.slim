@@ -1,0 +1,12 @@
+.table-responsive.my-table
+  table.table.table-striped.table-sm
+    thead
+      tr
+        th.border-top-0 #
+        th.border-top-0 Ip address
+        th.border-top-0 Params
+        th.border-top-0 Created at
+    tbody
+      = render partial: 'components/log_index/log', collection: @logs
+
+= paginate @logs, theme: 'twitter-bootstrap-4'
