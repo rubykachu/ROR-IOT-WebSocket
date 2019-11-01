@@ -1,3 +1,10 @@
+### Project structure
+
+**Contracts:** Validate form object
+**Controllers:** Call function and redirect page
+**Models:** Define assocations, not handle logic
+**Presenter:** Handle logic for layout (view, template) by object
+
 ### Area
 
 ![image](https://user-images.githubusercontent.com/27756008/63845267-f21fa580-c9b3-11e9-8e5d-1c1d9554dbc1.png)
@@ -15,7 +22,6 @@
 ![image](https://user-images.githubusercontent.com/27756008/63845454-30b56000-c9b4-11e9-9f3f-6d67b850721f.png)
 
 ![image](https://user-images.githubusercontent.com/27756008/63845504-3f9c1280-c9b4-11e9-8918-20eb61833259.png)
-
 
 ### User
 
