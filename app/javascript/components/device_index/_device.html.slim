@@ -1,14 +1,16 @@
-tr
-  td = device_counter + 1
-  td = device.name
-  td = device.position
-  td = device.area&.name
-  td
-    - if device.users.blank?
-      span.badge.badge-warning Unused
-    - else
-      = link_to count_pluralize(device.users.size, :people), nil, data: { toggle: 'modal', target: "#device-modal-#{device.id}" }
-      = render partial: 'components/device_index/modal', locals: { device: device, users: device.users }
-  td
-    = edit_link edit_device_path(device)
-    = delete_link device_path(device)
+= present(device) do |d|
+  tr
+    td = device_counter + 1
+    td = d.name
+    td = d.position
+    td = d.area&.name
+    td
+      - if device.users.blank?
+        span.badge.badge-warning Unused
+      - else
+        = link_to count_pluralize(device.users.size, :people), nil, data: { toggle: 'modal', target: "#device-modal-#{device.id}" }
+        = render partial: 'components/device_index/modal', locals: { device: device, users: device.users }
+    td = d.created_at_human
+    td
+      = edit_link edit_device_path(device)
+      = delete_link device_path(device)
