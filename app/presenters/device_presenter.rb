@@ -4,6 +4,7 @@ class DevicePresenter < ApplicationPresenter
   delegate :count, to: :users, prefix: true
 
   def created_at_human
+    return nil unless device.created_at?
     h.time_ago_in_words(device.created_at)
   end
 
