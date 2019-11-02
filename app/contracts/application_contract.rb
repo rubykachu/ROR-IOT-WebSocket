@@ -14,12 +14,12 @@ class ApplicationContract
   def before_valid; end
 
   def invalid?
-    self.before_valid
-    clean_attributes
-    !valid?
+    before_valid
+    assign_attributes_record
+    super
   end
 
-  def clean_attributes
+  def assign_attributes_record
     record_attributes = record.attribute_names.map(&:to_sym)
     except_attributes = attributes.keys - record_attributes
     record.assign_attributes(attributes.except(*except_attributes))
