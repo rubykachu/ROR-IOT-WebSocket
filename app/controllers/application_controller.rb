@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   include ApplicationHelper
 
+  # Authenticate
   def authenticate
     return redirect_to sign_in_path unless logined?
   end
